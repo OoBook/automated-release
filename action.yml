@@ -1,0 +1,20 @@
+name: Automated
+description: Automated Description
+author: oobook
+branding:
+  icon: target
+  color: yellow
+inputs:
+  test:
+    description: run mode of the action
+    required: false
+    default: false
+  # gh-token:
+  #   description: GitHub token with repo access
+  #   required: true
+outputs:
+  response:
+    description: 'The one of the results'
+runs:
+  using: node20
+  main: dist/index.js
