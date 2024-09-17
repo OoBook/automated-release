@@ -13,7 +13,7 @@ const {
 async function run() {
   try {
     const isTest = isTestStatus() // test input on the action.yml
-    const tag = Core.getInput('tag') || '' // tag input on the action.yml
+    let tag = Core.getInput('tag') || '' // tag input on the action.yml
     const draft = Core.getInput('draft') === 'true'
     const isCreate = Core.getInput('create') === 'true'
     const prerelease = Core.getInput('prerelease') === 'true'
@@ -33,14 +33,18 @@ async function run() {
       per_page: 100
     })
 
-    console.log(tags)
-
-    if (tag === '' && !Context.ref.match(/refs\/tags\/v(.*)/)) {
+    const matches = Context.ref.match(/refs\/tags\/(v.*)/)
+    if (tag === '' && !matches) {
       throw new Error(
         `No tag input or this is not the tags push event or the ref tag is not compatible with the Semantic Versioning!`
       )
     }
 
+    if (tag === '') {
+      tag = matches[1]
+    }
+
+    console.log(tag)
     // Sort tags by semantic version
     const sortedTags = tags
       .map(_tag => _tag.name)
