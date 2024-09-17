@@ -13,32 +13,23 @@ This action will automatically create a new release for your repository when a t
 
 ## Inputs
 
-### `gh-token`
+| Name | Description | Obligatory | Default
+| --- | --- | --- | --- |
+| `create` | Run mode of the action | optional | false |
+| `gh-token` | A GitHub token with `repo` scope. This is used to create release | required | |
+| `tag` | It's required to use in events except the tag push | optional | |
+| `create` | It's required to use in events except the tag push | optional | true |
 
-A GitHub token with `repo` scope. This is used to create release.
-
-### `tag` 
-
-It's required to use in events except the tag push.
-
-### `create` 
-
-A boolean input whether to create the release or not
 
 ## Outputs
 
-### `body`
+| Name | Description |
+| --- | --- | 
+| `body` | The generated release body with the commits |
+| `release-id` | If release is created, it gives the release ref id |
+| `release-url` | If release is created, it gives the release html url |
 
-The generated release body with the commits.
-
-### `release-id` 
-
-If release is created, it gives the release ref id.
-
-### `release-id` 
-
-If release is created, it gives the release html url.
-
+## Usage
 ```yaml
 name: Release
 
