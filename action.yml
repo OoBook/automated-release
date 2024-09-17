@@ -13,18 +13,18 @@ inputs:
     description: GitHub token with repo access
     required: true
   tag:
-    description: 'The tag of release'
+    description: The tag of release
     required: true
   create:
-    description: 'The release mode'
+    description: The release mode
     default: true
 outputs:
   body:
-    description: 'The release notes to use only text'
+    description: The release notes to use only text
   release-id:
-    description: 'The generated release's id if create mode is true'
+    description: The generated release's id if create mode is true
   release-url:
-    description: 'The generated release's url if create mode is true'
+    description: The generated release's url if create mode is true
 runs:
   using: node20
   main: dist/index.js
