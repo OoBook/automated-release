@@ -43,8 +43,6 @@ async function run() {
     if (tag === '') {
       tag = matches[1]
     }
-
-    console.log(tag)
     // Sort tags by semantic version
     const sortedTags = tags
       .map(_tag => _tag.name)
