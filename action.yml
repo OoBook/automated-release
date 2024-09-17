@@ -14,9 +14,10 @@ inputs:
     required: true
   tag:
     description: The tag of release
-    required: true
+    required: false
   create:
     description: The release mode
+    required: false
     default: true
 outputs:
   body:
