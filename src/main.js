@@ -34,7 +34,10 @@ async function run() {
     })
 
     Core.info(Context.ref)
-    if (tag === '' || !Context.ref.match(/refs\/tags\/v(.*)/)) {
+    Core.info(tag)
+    Core.info(Context.ref.match(/refs\/tags\/v(.*)/))
+    
+    if (tag === '' && !Context.ref.match(/refs\/tags\/v(.*)/)) {
       throw new Error(
         `No tag input or this is not the tags push event or the ref tag is not compatible with the Semantic Versioning!`
       )
