@@ -1,20 +1,30 @@
-name: Automated
-description: Automated Description
+name: Automated Release
+description: Create a new release with an elegant release body.
 author: oobook
 branding:
   icon: target
   color: yellow
 inputs:
   test:
-    description: run mode of the action
+    description: Run mode of the action
     required: false
     default: false
-  # gh-token:
-  #   description: GitHub token with repo access
-  #   required: true
+  gh-token:
+    description: GitHub token with repo access
+    required: true
+  tag:
+    description: 'The tag of release'
+    required: true
+  create:
+    description: 'The release mode'
+    default: true
 outputs:
-  response:
-    description: 'The one of the results'
+  body:
+    description: 'The release notes to use only text'
+  release-id:
+    description: 'The generated release's id if create mode is true'
+  release-url:
+    description: 'The generated release's url if create mode is true'
 runs:
   using: node20
   main: dist/index.js
