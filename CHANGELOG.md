@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.6 - 2024-09-19
+
+### :wrench: Bug Fixes
+
+- :bug: add draft, prerelease input parameters and fix gh_token by @OoBook in https://github.com/OoBook/automated-release/commit/7b0deb4eb60246a00c823af199688f31aea00b66
+
+### :beers: Other Stuff
+
+- Update CHANGELOG
+
 ## v1.0.5 - 2024-09-18
 
 ### :wrench: Bug Fixes
