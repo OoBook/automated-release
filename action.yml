@@ -9,7 +9,7 @@ inputs:
     description: Run mode of the action
     required: false
     default: false
-  gh-token:
+  gh_token:
     description: GitHub token with repo access
     required: true
   tag:
@@ -19,6 +19,14 @@ inputs:
     description: The release mode
     required: false
     default: true
+  draft:
+    description: Release the tag as draft
+    required: false
+    default: false
+  prerelease:
+    description: Release the tag as prerelease
+    required: false
+    default: false
 outputs:
   body:
     description: The release notes to use only text
