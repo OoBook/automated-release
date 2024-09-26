@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.0.7 - 2024-09-26
+
+### :wrench: Bug Fixes
+
+- :bug: change regex of tag in detail by @OoBook in https://github.com/OoBook/automated-release/commit/8008c251a18a2c7d95274f0696e002f1bd2ab153
+
+### :green_heart: Workflow
+
+- add update-main-version action by @OoBook in https://github.com/OoBook/automated-release/commit/4eadd9b4a855250ea519dc68f00e0180027b669b
+
+### :beers: Other Stuff
+
+- Update CHANGELOG
+
 ## v1.0.6 - 2024-09-19
 
 ### :wrench: Bug Fixes
