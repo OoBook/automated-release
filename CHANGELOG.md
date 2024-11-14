@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.0 - 2024-11-14
+
+**Full Changelog**: https://github.com/OoBook/automated-release/compare/v1.0.7...v1.2.0
+
 ## v1.0.7 - 2024-09-26
 
 ### :wrench: Bug Fixes
