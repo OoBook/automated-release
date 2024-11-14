@@ -8,14 +8,20 @@ inputs:
   test:
     description: Run mode of the action
     required: false
+<<<<<<< HEAD
     default: false
   gh_token:
+=======
+    default: 'false'
+  gh-token:
+>>>>>>> origin/dev
     description: GitHub token with repo access
     required: true
   tag:
     description: The tag of release
     required: false
   create:
+<<<<<<< HEAD
     description: The release mode
     required: false
     default: true
@@ -27,6 +33,13 @@ inputs:
     description: Release the tag as prerelease
     required: false
     default: false
+=======
+    description: 'The release mode'
+    default: 'true'
+  noCompatibles:
+    description: 'Exclude uncompatible commits from the release notes'
+    default: 'true'
+>>>>>>> origin/dev
 outputs:
   body:
     description: The release notes to use only text

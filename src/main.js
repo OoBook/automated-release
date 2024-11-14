@@ -17,6 +17,7 @@ async function run() {
     const draft = Core.getInput('draft') === 'true'
     const isCreate = Core.getInput('create') === 'true'
     const prerelease = Core.getInput('prerelease') === 'true'
+    const noUncompatibles = Core.getInput('noCompatibles') === 'true'
 
     // some needs
     const Context = getGhContext()
@@ -86,7 +87,7 @@ async function run() {
       perf: ':zap: Performance',
       refactor: ':recycle: Refactors',
       docs: ':memo: Documentation',
-      style: 'Styling',
+      style: ':lipstick: Styling',
       test: ':white_check_mark: Testing',
       build: ':package: Build',
       ci: ':green_heart: Workflow',
@@ -103,7 +104,9 @@ async function run() {
         const line = `${parsedCommit.subject} by @${commit.committer.login} in ${commit.html_url}`
         categories[type].push(line)
       } catch (error) {
-        categories.chore.push(commit.commit.message)
+        if(!noUncompatibles){
+          categories.chore.push(commit.commit.message)
+        }
       }
     }
 
