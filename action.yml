@@ -8,7 +8,7 @@ inputs:
   test:
     description: Run mode of the action
     required: false
-    default: false
+    default: 'false'
   gh-token:
     description: GitHub token with repo access
     required: true
@@ -17,7 +17,10 @@ inputs:
     required: true
   create:
     description: 'The release mode'
-    default: true
+    default: 'true'
+  noCompatibles:
+    description: 'Exclude uncompatible commits from the release notes'
+    default: 'true'
 outputs:
   body:
     description: 'The release notes to use only text'
