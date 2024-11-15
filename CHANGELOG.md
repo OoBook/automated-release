@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.1 - 2024-11-15
+
+### :wrench: Bug Fixes
+
+- fix head commits by @OoBook in https://github.com/OoBook/automated-release/commit/997dc58ebb3decddd9e6c8227f26dafdbd69b194
+
 ## v1.2.0 - 2024-11-14
 
 **Full Changelog**: https://github.com/OoBook/automated-release/compare/v1.0.7...v1.2.0
