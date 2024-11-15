@@ -17,7 +17,7 @@ async function run() {
     const draft = Core.getInput('draft') === 'true'
     const isCreate = Core.getInput('create') === 'true'
     const prerelease = Core.getInput('prerelease') === 'true'
-    const noUncompatibles = Core.getInput('noCompatibles') === 'true'
+    const noUncompatibles = Core.getInput('no-uncompatibles') === 'true'
 
     // some needs
     const Context = getGhContext()
