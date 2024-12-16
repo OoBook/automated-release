@@ -61,12 +61,26 @@ async function run() {
       console.log('No previous tag found. This is likely the first release.')
     }
 
-    const { data: commits } = await Octokit.rest.repos.compareCommits({
-      owner,
-      repo,
-      base: previousTag || '',
-      head: tag
-    })
+    let commits = [];
+
+    if (!previousTag) {
+      // If this is the first tag, get the commits directly
+      const { data: repoCommits } = await Octokit.rest.repos.listCommits({
+        owner,
+        repo,
+        per_page: 20 // Adjust this number based on your needs
+      });
+      commits = repoCommits;
+    } else {
+      // If there is a previous tag, compare commits
+      const { data: compareData } = await Octokit.rest.repos.compareCommits({
+        owner,
+        repo,
+        base: previousTag,
+        head: tag
+      });
+      commits = compareData.commits;
+    }
 
     // Parse and categorize commits
     const categories = {
@@ -95,7 +109,7 @@ async function run() {
     }
 
     // console.log(commits.commits[0])
-    for (const commit of commits.commits) {
+    for (const commit of commits) {
       try {
         const parsedCommit = toConventionalChangelogFormat(
           parser(commit.commit.message)
