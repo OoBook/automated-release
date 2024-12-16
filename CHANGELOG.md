@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.2.2 - 2024-12-16
+
+### :wrench: Bug Fixes
+
+- fix head commits by @OoBook in https://github.com/OoBook/automated-release/commit/42b003e0825cc81580c7378d047c8d805de6d3c7
+
+### :recycle: Refactors
+
+- improve commit retrieval logic for tagging by @OoBook in https://github.com/OoBook/automated-release/commit/dfac1238c3cb8da6b8a50ddecf9d1330a284d34a
+
+### :beers: Other Stuff
+
+- update binary files for distribution by @OoBook in https://github.com/OoBook/automated-release/commit/e6ddabed139a960443e8717d983dd7fc8a7d9fc7
+
 ## v1.2.1 - 2024-11-15
 
 ### :wrench: Bug Fixes
