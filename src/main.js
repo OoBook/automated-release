@@ -13,11 +13,11 @@ const {
 async function run() {
   try {
     const isTest = isTestStatus() // test input on the action.yml
-    let tag = Core.getInput('tag') || '' // tag input on the action.yml
-    const draft = Core.getInput('draft') === 'true'
-    const isCreate = Core.getInput('create') === 'true'
-    const prerelease = Core.getInput('prerelease') === 'true'
-    const noUncompatibles = Core.getInput('no-uncompatibles') === 'true'
+    let tag = Core.getInput('tag', { required: false }) || '' // tag input on the action.yml
+    const draft = (Core.getInput('draft', { required: false }) || 'false') === 'true'
+    const isCreate = (Core.getInput('create', { required: false }) || 'true') === 'true'
+    const prerelease = (Core.getInput('prerelease', { required: false }) || 'false') === 'true'
+    const noUncompatibles = (Core.getInput('include-uncompatibles', { required: false }) || 'false') === 'false'
 
     // some needs
     const Context = getGhContext()
@@ -50,12 +50,15 @@ async function run() {
       .filter(_tag => semver.valid(_tag))
       .sort((a, b) => semver.rcompare(a, b))
 
+
     const currentTagIndex = sortedTags.indexOf(tag)
+
     if (currentTagIndex === -1) {
       throw new Error(`Current tag ${tag} not found in the list of tags`)
     }
 
     const previousTag = sortedTags[currentTagIndex + 1]
+
 
     if (!previousTag) {
       console.log('No previous tag found. This is likely the first release.')
@@ -115,7 +118,21 @@ async function run() {
           parser(commit.commit.message)
         )
         const type = parsedCommit.type
-        const line = `${parsedCommit.subject} by @${commit.committer.login} in ${commit.html_url}`
+        const phases = [
+          parsedCommit.subject,
+        ]
+        if (commit.committer && commit.committer.login) {
+          // GitHub user exists
+          phases.push(`by @${commit.committer.login}`)
+        } else if (commit.commit && commit.commit.committer) {
+          // Fall back to Git committer name
+          phases.push(`by ${commit.commit.committer.name}`)
+        }
+        if(commit.html_url){
+          phases.push(`in ${commit.html_url}`)
+        }
+        const line = phases.join(' ')
+
         categories[type].push(line)
       } catch (error) {
         if(!noUncompatibles){
@@ -172,7 +189,7 @@ async function run() {
 }
 
 function isTestStatus() {
-  return Core.getInput('test', { required: false }) === 'true'
+  return (Core.getInput('test', { required: false }) || 'false') === 'true'
 }
 
 function getRepoOwner() {

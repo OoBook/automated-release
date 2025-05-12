@@ -5,31 +5,26 @@ branding:
   icon: target
   color: yellow
 inputs:
-  test:
-    description: Run mode of the action
-    required: false
-    default: 'false'
   gh_token:
     description: GitHub token with repo access
     required: true
   tag:
     description: The tag of release
     required: false
+  test:
+    description: Run mode of the action
+    default: 'false'
   create:
     description: The release mode
-    required: false
-    default: 'true'
   draft:
     description: Release the tag as draft
-    required: false
     default: 'false'
   prerelease:
     description: Release the tag as prerelease
-    required: false
     default: 'false'
-  no-uncompatibles:
-    description: 'Exclude uncompatible commits from the release notes'
-    default: 'true'
+  include-uncompatibles:
+    description: 'Include uncompatible commits to the release notes'
+    default: 'false'
 outputs:
   body:
     description: The release notes to use only text
