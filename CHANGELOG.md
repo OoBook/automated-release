@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.0 - 2025-05-12
+
+### :wrench: Bug Fixes
+
+- update action.yml inputs and improve commit message formatting by @OoBook in https://github.com/OoBook/automated-release/commit/c9483e68a61b548f2b221953651b9b209c9b10af
+
 ## v1.2.2 - 2024-12-16
 
 ### :wrench: Bug Fixes
